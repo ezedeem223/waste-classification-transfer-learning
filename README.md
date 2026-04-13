@@ -9,6 +9,16 @@ This project builds an image classification workflow for waste sorting using tra
 
 The notebook in [notebooks/main.ipynb](notebooks/main.ipynb) is the main source of truth for the project and contains the original training, fine-tuning, evaluation, and visual outputs.
 
+## Key Results
+
+- Fine-tuned test accuracy: `0.83`
+- Best validation accuracy: `0.8854`
+- Best validation loss: `0.2709`
+- Input size: `150x150`
+- Classes: `Organic (O)` and `Recyclable (R)`
+
+![Fine-Tuned Accuracy Curve](outputs/fine_tuned_accuracy_curve.png)
+
 ## Model Availability
 
 One trained checkpoint is currently included in this repository:
@@ -58,15 +68,20 @@ Evaluation in the notebook is performed on `100` held-out test images loaded exp
 
 ## Visual Outputs
 
-- [Augmented training samples](outputs/augmented_organic_samples.png)
-- [Extract-features loss curve](outputs/extract_features_loss_curve.png)
-- [Extract-features accuracy curve](outputs/extract_features_accuracy_curve.png)
-- [Fine-tuned loss curve](outputs/fine_tuned_loss_curve.png)
-- [Fine-tuned accuracy curve](outputs/fine_tuned_accuracy_curve.png)
-- [Combined evaluation reports](outputs/evaluation_reports.txt)
-- [Extract-features prediction example 0](outputs/extract_features_prediction_example_0.png)
-- [Extract-features prediction example 1](outputs/extract_features_prediction_example_1.png)
-- [Fine-tuned prediction example 1](outputs/fine_tuned_prediction_example_1.png)
+- Training curves:
+  [Extract-features loss](outputs/extract_features_loss_curve.png),
+  [Extract-features accuracy](outputs/extract_features_accuracy_curve.png),
+  [Fine-tuned loss](outputs/fine_tuned_loss_curve.png),
+  [Fine-tuned accuracy](outputs/fine_tuned_accuracy_curve.png)
+- Evaluation artifacts:
+  [Combined evaluation reports](outputs/evaluation_reports.txt),
+  [Extract-features report](outputs/extract_features_classification_report.txt),
+  [Fine-tuned report](outputs/fine_tuned_classification_report.txt)
+- Qualitative examples:
+  [Augmented training samples](outputs/augmented_organic_samples.png),
+  [Extract-features prediction 0](outputs/extract_features_prediction_example_0.png),
+  [Extract-features prediction 1](outputs/extract_features_prediction_example_1.png),
+  [Fine-tuned prediction 1](outputs/fine_tuned_prediction_example_1.png)
 
 ## Project Structure
 
@@ -75,6 +90,7 @@ waste-classification-transfer-learning/
 +-- data/
 |   +-- README.md
 +-- models/
+|   +-- vgg16_waste_classifier.keras
 |   +-- .gitkeep
 +-- notebooks/
 |   +-- main.ipynb
@@ -112,7 +128,7 @@ The notebook also contains an optional helper cell that can download the same re
 4. Put the dataset inside `data/o-vs-r-split/`
 5. Open and run [notebooks/main.ipynb](notebooks/main.ipynb)
 
-## Predict On A Single Image
+## Quick Inference
 
 The repository already includes a trained checkpoint at `models/vgg16_waste_classifier.keras`, so you can run inference directly:
 
@@ -127,6 +143,13 @@ python predict.py path\\to\\image.jpg --model models\\vgg16_waste_classifier.ker
 ```
 
 By default, the script loads `models/vgg16_waste_classifier.keras`.
+
+## Limitations
+
+- The dataset is not included in the repository.
+- The current project targets binary classification only: `Organic (O)` vs `Recyclable (R)`.
+- Reported metrics are taken from stored notebook outputs already present in the project, not from a fresh rerun in this session.
+- The bundled model file is relatively large for a standard Git repository.
 
 ## Notes
 
