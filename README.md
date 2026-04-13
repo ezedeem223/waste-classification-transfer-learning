@@ -66,6 +66,10 @@ The following numbers come from the stored notebook outputs only. They are not p
 
 Evaluation in the notebook is performed on `100` held-out test images loaded explicitly in the code (`50` organic and `50` recyclable).
 
+## Why Fine-Tuning Helped
+
+The extract-features model reached `0.79` test accuracy, while the fine-tuned model improved that result to `0.83`. In this workflow, unfreezing the final VGG16 convolution block allowed the model to adapt better to waste-image features than relying only on general ImageNet features.
+
 ## Visual Outputs
 
 - Training curves:
@@ -91,7 +95,6 @@ waste-classification-transfer-learning/
 |   +-- README.md
 +-- models/
 |   +-- vgg16_waste_classifier.keras
-|   +-- .gitkeep
 +-- notebooks/
 |   +-- main.ipynb
 +-- outputs/
@@ -143,6 +146,15 @@ python predict.py path\\to\\image.jpg --model models\\vgg16_waste_classifier.ker
 ```
 
 By default, the script loads `models/vgg16_waste_classifier.keras`.
+
+Example output format:
+
+```bash
+Model: models/vgg16_waste_classifier.keras
+Predicted class: Organic (O)
+Recyclable probability: 0.1821
+Organic probability: 0.8179
+```
 
 ## Limitations
 
