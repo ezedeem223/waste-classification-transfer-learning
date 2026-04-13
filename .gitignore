@@ -1,0 +1,17 @@
+.venv/
+**pycache**/
+__pycache__/
+.ipynb_checkpoints/
+data/
+!data/
+!data/README.md
+# Keep local training checkpoints out of the repository by default.
+# If you later decide to publish a specific small model file, add an explicit
+# negate rule for that exact path.
+*.h5
+*.keras
+!models/vgg16_waste_classifier.keras
+*.pt
+.DS_Store
+desktop.ini
+Desktop.ini
