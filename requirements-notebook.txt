@@ -1,0 +1,7 @@
+-r requirements.txt
+
+jupyter
+matplotlib==3.9.2
+requests
+scikit-learn==1.5.1
+tqdm

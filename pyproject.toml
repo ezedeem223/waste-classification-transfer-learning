@@ -1,0 +1,33 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "waste-classification-transfer-learning"
+version = "0.1.0"
+description = "Waste classification using VGG16 transfer learning for recyclable vs organic image recognition."
+readme = "README.md"
+requires-python = ">=3.10"
+authors = [{ name = "ezedeem223" }]
+keywords = [
+  "computer-vision",
+  "deep-learning",
+  "image-classification",
+  "tensorflow",
+  "transfer-learning",
+  "vgg16",
+  "waste-classification",
+]
+
+[tool.pytest.ini_options]
+addopts = "-q"
+testpaths = ["tests"]
+asyncio_default_fixture_loop_scope = "function"
+
+[tool.ruff]
+line-length = 88
+target-version = "py310"
+extend-exclude = ["data", "models", "notebooks", "outputs"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I"]

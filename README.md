@@ -25,7 +25,7 @@ One trained checkpoint is currently included in this repository:
 
 - `models/vgg16_waste_classifier.keras`
 
-The dataset is still not bundled with the repository. The included model can be used directly with [predict.py](predict.py), while the notebook can still be rerun locally to regenerate checkpoints if needed.
+The repository does not bundle the dataset, but the included checkpoint can be used directly with [predict.py](predict.py). The notebook can still be rerun locally to regenerate checkpoints if needed.
 
 ## Business / Industrial Context
 
@@ -93,6 +93,9 @@ The extract-features model reached `0.79` test accuracy, while the fine-tuned mo
 waste-classification-transfer-learning/
 +-- data/
 |   +-- README.md
++-- .github/
+|   +-- workflows/
+|       +-- ci.yml
 +-- models/
 |   +-- vgg16_waste_classifier.keras
 +-- notebooks/
@@ -101,9 +104,14 @@ waste-classification-transfer-learning/
 |   +-- *.png
 |   +-- *.txt
 +-- .gitignore
++-- pyproject.toml
 +-- predict.py
 +-- README.md
++-- requirements-dev.txt
++-- requirements-notebook.txt
 +-- requirements.txt
++-- tests/
+|   +-- test_predict.py
 ```
 
 ## Dataset
@@ -128,12 +136,13 @@ The notebook also contains an optional helper cell that can download the same re
 1. `python -m venv .venv`
 2. `.venv\Scripts\activate`
 3. `pip install -r requirements.txt`
-4. Put the dataset inside `data/o-vs-r-split/`
-5. Open and run [notebooks/main.ipynb](notebooks/main.ipynb)
+4. For the notebook / training workflow, install the extra dependencies with `pip install -r requirements-notebook.txt`
+5. Put the dataset inside `data/o-vs-r-split/`
+6. Open and run [notebooks/main.ipynb](notebooks/main.ipynb)
 
 ## Quick Inference
 
-The repository already includes a trained checkpoint at `models/vgg16_waste_classifier.keras`, so you can run inference directly:
+The repository already includes a trained checkpoint at `models/vgg16_waste_classifier.keras`, so you can run inference directly after installing the runtime dependencies:
 
 ```bash
 python predict.py path\\to\\image.jpg
@@ -159,14 +168,15 @@ Organic probability: 0.8179
 ## Limitations
 
 - The dataset is not included in the repository.
+- Raw sample input images are not bundled in the repository because no confirmed dataset images are tracked here.
 - The current project targets binary classification only: `Organic (O)` vs `Recyclable (R)`.
 - Reported metrics are taken from stored notebook outputs already present in the project, not from a fresh rerun in this session.
 - The bundled model file is relatively large for a standard Git repository.
 
-## Notes
+## Repository Notes
 
-- The repository does not include the dataset.
 - The trained checkpoint `models/vgg16_waste_classifier.keras` is included in the repository.
 - Other local model files remain excluded from Git by default.
+- Runtime dependencies live in `requirements.txt`, notebook extras in `requirements-notebook.txt`, and test / lint tooling in `requirements-dev.txt`.
 - The notebook was cleaned for portfolio / GitHub use, but the VGG16-based methodology was kept intact.
 - A confusion matrix was not present in the source notebook outputs, so none is claimed here.

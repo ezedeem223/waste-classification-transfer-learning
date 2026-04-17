@@ -60,7 +60,9 @@ def predict_image(image_path: Path, model_path: Path) -> tuple[str, float]:
 
 def main() -> None:
     parser = argparse.ArgumentParser(
-        description="Predict waste class for a single image using the saved VGG16 model."
+        description=(
+            "Predict waste class for a single image using the saved VGG16 model."
+        )
     )
     parser.add_argument("image", help="Path to the image file.")
     parser.add_argument(
