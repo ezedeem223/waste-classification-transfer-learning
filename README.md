@@ -2,12 +2,20 @@
 
 ## Overview
 
-This project builds an image classification workflow for waste sorting using transfer learning with `VGG16`. The goal is to classify waste images into two categories:
+This repository packages a transfer-learning workflow for waste image
+classification using `VGG16`. The maintained public surface centers on the
+bundled checkpoint, `predict.py`, and the supporting project files, while the
+preserved notebook remains available for reproducibility and stored training
+outputs.
+
+The goal is to classify waste images into two categories:
 
 - `O`: Organic
 - `R`: Recyclable
 
-The notebook in [notebooks/main.ipynb](notebooks/main.ipynb) is the main source of truth for the project and contains the original training, fine-tuning, evaluation, and visual outputs.
+The archived notebook in [notebooks/main.ipynb](notebooks/main.ipynb) captures
+the original training, fine-tuning, evaluation, and visual outputs that the
+repository documents.
 
 ## Key Results
 
@@ -39,7 +47,7 @@ GreenCity is struggling with manual waste sorting, especially when recyclable an
 - Data augmentation on the training split with horizontal flip and small width / height shifts
 - Fine-tuning by unfreezing the last VGG16 convolution block starting from `block5_conv3`
 
-## Notebook Facts Extracted From The Stored Run
+## Stored Run Metadata
 
 - TensorFlow version: `2.17.0`
 - Generator counts:
@@ -96,9 +104,13 @@ waste-classification-transfer-learning/
 +-- .github/
 |   +-- workflows/
 |       +-- ci.yml
++-- .gitattributes
++-- CITATION.cff
++-- LICENSE
 +-- models/
 |   +-- vgg16_waste_classifier.keras
 +-- notebooks/
+|   +-- README.md
 |   +-- main.ipynb
 +-- outputs/
 |   +-- *.png
@@ -129,9 +141,12 @@ data/
         +-- R/
 ```
 
-The notebook also contains an optional helper cell that can download the same reduced dataset used in the original source notebook if the folder is missing.
+The preserved notebook also contains an optional helper cell that can download
+the same reduced dataset if the folder is missing.
 
 ## How to Run
+
+For the reproducible notebook / training workflow:
 
 1. `python -m venv .venv`
 2. `.venv\Scripts\activate`
@@ -178,5 +193,11 @@ Organic probability: 0.8179
 - The trained checkpoint `models/vgg16_waste_classifier.keras` is included in the repository.
 - Other local model files remain excluded from Git by default.
 - Runtime dependencies live in `requirements.txt`, notebook extras in `requirements-notebook.txt`, and test / lint tooling in `requirements-dev.txt`.
-- The notebook was cleaned for portfolio / GitHub use, but the VGG16-based methodology was kept intact.
+- `predict.py` is the direct usage path for the bundled checkpoint, while the preserved notebook remains available for reproducibility and provenance.
 - A confusion matrix was not present in the source notebook outputs, so none is claimed here.
+
+## License
+
+Code in this repository is released under the [MIT License](LICENSE). Dataset
+usage remains subject to the upstream data source and any terms that apply to
+that dataset outside this repository.

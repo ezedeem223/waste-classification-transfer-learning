@@ -1,0 +1,8 @@
+cff-version: 1.2.0
+message: "If you use this repository, please cite it using the metadata below."
+title: "Waste Classification using Transfer Learning (VGG16)"
+authors:
+  - family-names: "Sabbagh"
+    given-names: "Mohamad"
+repository-code: "https://github.com/ezedeem223/waste-classification-transfer-learning"
+license: "MIT"
