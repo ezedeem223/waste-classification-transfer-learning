@@ -188,6 +188,29 @@ Organic probability: 0.8179
 - Reported metrics are taken from stored notebook outputs already present in the project, not from a fresh rerun in this session.
 - The bundled model file is relatively large for a standard Git repository.
 
+## Research Evidence Pack
+
+The `docs/research_pack/` directory contains institution-neutral research and
+model-release documentation for the waste classification workflow, including an
+[academic research brief](docs/research_pack/ACADEMIC_RESEARCH_BRIEF.md),
+[model card](docs/research_pack/MODEL_CARD.md),
+[model release card](docs/research_pack/MODEL_RELEASE_CARD.md),
+[checkpoint and inference card](docs/research_pack/CHECKPOINT_AND_INFERENCE_CARD.md),
+[metric provenance matrix](docs/research_pack/METRIC_PROVENANCE_MATRIX.md),
+[dataset and task card](docs/research_pack/DATASET_AND_TASK_CARD.md),
+[sustainability use-case boundary](docs/research_pack/SUSTAINABILITY_USE_CASE_BOUNDARY.md),
+[failure mode matrix](docs/research_pack/FAILURE_MODE_MATRIX.md),
+[calibration and thresholding protocol](docs/research_pack/CALIBRATION_AND_THRESHOLDING_PROTOCOL.md),
+[interpretability protocol](docs/research_pack/INTERPRETABILITY_PROTOCOL.md),
+[inference reproducibility guide](docs/research_pack/INFERENCE_REPRODUCIBILITY_GUIDE.md),
+and a [reproducibility checklist](docs/research_pack/REPRODUCIBILITY_CHECKLIST.md).
+
+Run:
+
+```bash
+python tools/evidence/validate_research_pack.py
+```
+
 ## Repository Notes
 
 - The trained checkpoint `models/vgg16_waste_classifier.keras` is included in the repository.
